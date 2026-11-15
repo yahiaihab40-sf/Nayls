@@ -1,0 +1,1049 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nayls</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Nayls — Egyptian-inspired luxury press-on nails.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Jost:wght@300;400;500;600&family=Noto+Sans+Egyptian+Hieroglyphs&display=swap">
+<style>
+/* Layout: a night-sky tomb wall — lapis ground, gold leaf type, nails shown as 3D artefacts on pedestals */
+:root{
+  color-scheme: dark;
+  --night:#0a0f24; --night-2:#101839; --lapis:#1f3591; --lapis-hi:#3552c4;
+  --gold:#d9b45a; --gold-hi:#f6e2a4; --gold-lo:#94722a;
+  --faience:#3cc4b4; --carnelian:#cf5733;
+  --sand:#f0e5c9; --sand-dim:#b7aa8b; --ink:#0a0f24;
+  --line:rgba(217,180,90,.22); --line-strong:rgba(217,180,90,.5);
+  --glass:rgba(16,24,57,.72);
+  --f-display:"Cormorant Garamond", "Iowan Old Style", Georgia, serif;
+  --f-caps:"Cinzel", "Trajan Pro", "Times New Roman", serif;
+  --f-body:"Jost", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --f-glyph:"Noto Sans Egyptian Hieroglyphs", "Segoe UI Historic", "Aegyptus", sans-serif;
+  --gutter-l:max(20px, env(safe-area-inset-left, 0px));
+  --gutter-r:max(20px, env(safe-area-inset-right, 0px));
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--night); color:var(--sand); font-family:var(--f-body); font-size:16px; line-height:1.6; font-weight:300}
+body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top,0px); z-index:60; background:var(--night)}
+.page{overflow-x:clip; position:relative}
+a{color:inherit}
+button{font:inherit; color:inherit; cursor:pointer}
+:focus-visible{outline:2px solid var(--gold-hi); outline-offset:3px; border-radius:6px}
+.wrap{max-width:1240px; margin-inline:auto; padding-left:var(--gutter-l); padding-right:var(--gutter-r)}
+h1,h2,h3{font-family:var(--f-display); font-weight:600; line-height:1.02; margin:0; text-wrap:balance}
+p{margin:0}
+.eyebrow{font-family:var(--f-caps); font-size:.78rem; letter-spacing:.32em; text-transform:uppercase; color:var(--gold)}
+.gold-text{background:linear-gradient(100deg,var(--gold-lo) 0%,var(--gold-hi) 25%,var(--gold) 45%,#fff6d6 55%,var(--gold) 65%,var(--gold-lo) 100%); background-size:220% auto; -webkit-background-clip:text; background-clip:text; color:transparent; animation:shimmer 7s linear infinite}
+@keyframes shimmer{to{background-position:-220% 0}}
+
+/* Sky */
+.sky{position:fixed; inset:0; z-index:-1; pointer-events:none;
+  background:
+   radial-gradient(1200px 700px at 80% -10%, rgba(53,82,196,.35), transparent 60%),
+   radial-gradient(900px 600px at -10% 40%, rgba(60,196,180,.10), transparent 60%),
+   radial-gradient(800px 600px at 50% 120%, rgba(207,87,51,.12), transparent 60%),
+   var(--night)}
+.sky::before{content:""; position:absolute; inset:0; opacity:.55;
+  background-image:
+   radial-gradient(1px 1px at 20px 30px,#fff,transparent),
+   radial-gradient(1px 1px at 120px 80px,#f6e2a4,transparent),
+   radial-gradient(1.4px 1.4px at 200px 160px,#fff,transparent),
+   radial-gradient(1px 1px at 300px 40px,#cfe,transparent),
+   radial-gradient(1px 1px at 360px 220px,#fff,transparent);
+  background-size:400px 260px; animation:twinkle 6s ease-in-out infinite alternate}
+@keyframes twinkle{to{opacity:.25}}
+#dust{position:fixed; inset:0; z-index:70; pointer-events:none}
+
+/* Buttons */
+.btn{--pad:14px 26px; position:relative; display:inline-flex; align-items:center; justify-content:center; gap:10px; padding:var(--pad); border-radius:999px; border:1px solid var(--line-strong); background:transparent; font-family:var(--f-caps); font-size:.8rem; letter-spacing:.2em; text-transform:uppercase; text-decoration:none; overflow:hidden; transition:transform .35s var(--ease), box-shadow .35s, background .35s, color .35s}
+.btn:hover{transform:translateY(-2px)}
+.btn-gold{color:var(--ink); border-color:transparent; font-weight:700;
+  background:linear-gradient(135deg,var(--gold-lo),var(--gold-hi) 40%,var(--gold) 60%,var(--gold-lo));
+  box-shadow:0 10px 30px -10px rgba(217,180,90,.7), inset 0 1px 0 rgba(255,255,255,.5)}
+.btn-gold::after{content:""; position:absolute; inset:0; background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.7) 50%,transparent 70%); transform:translateX(-120%); transition:transform .8s var(--ease)}
+.btn-gold:hover::after{transform:translateX(120%)}
+.btn-gold:hover{box-shadow:0 16px 40px -10px rgba(217,180,90,.9), inset 0 1px 0 rgba(255,255,255,.5)}
+.btn-ghost{color:var(--gold-hi)}
+.btn-ghost:hover{background:rgba(217,180,90,.1); box-shadow:0 0 0 1px var(--gold) inset}
+
+/* Nav */
+.nav{position:sticky; top:env(safe-area-inset-top,0px); z-index:50; backdrop-filter:blur(14px) saturate(1.3); -webkit-backdrop-filter:blur(14px) saturate(1.3); background:rgba(10,15,36,.7); border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex; align-items:center; justify-content:space-between; gap:20px; height:72px}
+.logo{display:flex; align-items:center; gap:10px; text-decoration:none}
+.logo svg{width:46px; height:18px; color:var(--gold)}
+.logo b{font-family:var(--f-caps); font-weight:700; font-size:1.5rem; letter-spacing:.28em}
+.nav-links{display:flex; gap:30px; list-style:none; margin:0; padding:0}
+.nav-links a{font-family:var(--f-caps); font-size:.74rem; letter-spacing:.24em; text-transform:uppercase; text-decoration:none; color:var(--sand-dim); position:relative; padding:6px 0; transition:color .3s}
+.nav-links a::after{content:""; position:absolute; left:50%; right:50%; bottom:0; height:1px; background:var(--gold); transition:left .35s var(--ease), right .35s var(--ease)}
+.nav-links a:hover{color:var(--gold-hi)}
+.nav-links a:hover::after{left:0; right:0}
+.bag-btn{display:flex; align-items:center; gap:10px; border:1px solid var(--line-strong); background:rgba(217,180,90,.06); border-radius:999px; padding:9px 16px 9px 14px; font-family:var(--f-caps); font-size:.72rem; letter-spacing:.2em; text-transform:uppercase; transition:background .3s}
+.bag-btn:hover{background:rgba(217,180,90,.16)}
+.bag-btn svg{width:18px; height:18px; color:var(--gold)}
+.bag-count{min-width:22px; height:22px; border-radius:11px; background:var(--gold); color:var(--ink); display:grid; place-items:center; font-family:var(--f-body); font-weight:600; font-size:.75rem; letter-spacing:0}
+.bag-count.bump{animation:bump .5s var(--ease)}
+@keyframes bump{40%{transform:scale(1.5) rotate(-10deg)}}
+@media (max-width:820px){.nav-links{display:none}}
+
+/* Nails */
+.nail{--w:46px; --h:72px; position:relative; display:block; width:calc(var(--w)*var(--s,1)); height:calc(var(--h)*var(--s,1)*var(--len,1)); background:var(--bg); overflow:hidden;
+  box-shadow: inset 0 -10px 16px rgba(0,0,0,.38), inset 0 3px 5px rgba(255,255,255,.28), inset 0 0 0 1px rgba(255,255,255,.1);
+  clip-path:polygon(50% 0,100% 0,100% 30%,100% 62%,100% 100%,0 100%,0 62%,0 30%,0 0);
+  transition:border-radius .6s var(--ease), clip-path .6s var(--ease), height .6s var(--ease), width .6s var(--ease)}
+.nail::after{content:""; position:absolute; inset:0; pointer-events:none;
+  background:
+    linear-gradient(100deg,transparent 35%,rgba(255,255,255,.55) 45%,transparent 55%) var(--sx,120%) 0/300% 100% no-repeat,
+    radial-gradient(ellipse 40% 30% at 30% 18%,rgba(255,255,255,.45),transparent 70%),
+    linear-gradient(90deg,rgba(0,0,0,.25),transparent 18%,transparent 82%,rgba(0,0,0,.3));
+  transition:background-position 1s var(--ease), opacity .4s}
+.s-almond{border-radius:50% 50% 46% 46% / 64% 64% 28% 28%}
+.s-oval{border-radius:50% 50% 46% 46% / 40% 40% 28% 28%}
+.s-square{border-radius:10% 10% 46% 46% / 6% 6% 28% 28%}
+.s-coffin{border-radius:3px 3px 46% 46% / 3px 3px 28% 28%; clip-path:polygon(50% 0,77% 0,89% 31%,100% 62%,100% 100%,0 100%,0 62%,11% 31%,23% 0)}
+.s-stiletto{border-radius:0 0 46% 46% / 0 0 28% 28%; clip-path:polygon(50% 0,70% 22%,90% 50%,100% 70%,100% 100%,0 100%,0 70%,10% 50%,30% 22%)}
+.nail .motif{position:absolute; left:50%; top:54%; width:62%; height:42%; transform:translate(-50%,-50%); color:var(--m); filter:drop-shadow(0 1px 1px rgba(0,0,0,.45))}
+.nail .glyphs{position:absolute; inset:16% 0 18%; display:flex; flex-direction:column; align-items:center; justify-content:center; font-family:var(--f-glyph); color:var(--m); font-size:calc(var(--w)*var(--s,1)*.34); line-height:1.05}
+.f-matte .nail::after{opacity:.12}
+.f-matte .nail{filter:saturate(.85) brightness(.95)}
+.f-chrome .nail{filter:saturate(1.35) contrast(1.15) brightness(1.06)}
+.f-chrome .nail::after{background:
+    linear-gradient(100deg,transparent 25%,rgba(255,255,255,.85) 42%,rgba(160,220,255,.4) 50%,transparent 60%) var(--sx,120%) 0/300% 100% no-repeat,
+    radial-gradient(ellipse 50% 35% at 30% 18%,rgba(255,255,255,.7),transparent 70%)}
+.nf{display:block; filter:drop-shadow(0 10px 12px rgba(0,0,0,.55)) drop-shadow(0 0 1px rgba(0,0,0,.4))}
+
+/* HERO */
+.hero{position:relative; padding-block:56px 40px}
+.hero .wrap{display:grid; grid-template-columns:1.05fr 1fr; gap:40px; align-items:center}
+.hero-copy{min-width:0; display:grid; gap:26px; animation:rise 1s var(--ease) both}
+.hero h1{font-size:clamp(3rem,7.4vw,6.4rem); letter-spacing:-.01em}
+.hero h1 em{font-style:italic; display:block}
+.hero-lede{font-size:1.15rem; color:var(--sand-dim); max-width:46ch}
+.hero-cta{display:flex; flex-wrap:wrap; gap:14px}
+.hero-facts{display:flex; flex-wrap:wrap; gap:28px; padding-top:8px; border-top:1px solid var(--line)}
+.hero-facts div{display:grid}
+.hero-facts b{font-family:var(--f-display); font-size:2rem; font-weight:600; color:var(--gold-hi); line-height:1.1}
+.hero-facts span{font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; color:var(--sand-dim)}
+@keyframes rise{from{opacity:0; transform:translateY(24px)}}
+
+.stage{position:relative; width:100%; max-width:580px; aspect-ratio:1/1; margin-inline:auto; perspective:1200px; touch-action:pan-y}
+.halo{position:absolute; inset:12%; border-radius:50%; background:radial-gradient(circle,rgba(246,226,164,.55),rgba(217,180,90,.18) 40%,transparent 70%); filter:blur(6px); animation:pulse 5s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.06); opacity:.8}}
+.glyph-ring{position:absolute; inset:2%; animation:spin 80s linear infinite; opacity:.75}
+.glyph-ring text{font-family:var(--f-glyph); font-size:21px; fill:var(--gold)}
+.glyph-ring .r2{animation:spin 120s linear infinite reverse; transform-origin:50% 50%}
+@keyframes spin{to{transform:rotate(360deg)}}
+.pedestal{position:absolute; left:50%; bottom:14%; width:66%; height:16%; transform:translateX(-50%); border-radius:50%;
+  background:radial-gradient(ellipse at 50% 40%,rgba(246,226,164,.35),rgba(217,180,90,.08) 55%,transparent 72%);
+  box-shadow:0 0 0 1px rgba(217,180,90,.35) inset}
+.pedestal::after{content:""; position:absolute; inset:18% 12%; border-radius:50%; border:1px dashed rgba(217,180,90,.45); animation:spin 30s linear infinite}
+.rig-auto{position:absolute; inset:0; transform-style:preserve-3d; animation:sway 9s ease-in-out infinite}
+@keyframes sway{0%,100%{transform:rotateY(-8deg)}50%{transform:rotateY(8deg)}}
+.rig{position:absolute; inset:0; transform-style:preserve-3d; transform:rotateX(var(--rx,6deg)) rotateY(var(--ry,0deg)); transition:transform .5s var(--ease)}
+.rig .nw{position:absolute; left:50%; bottom:31%; transform-style:preserve-3d; transform-origin:50% 100%;
+  transform:translateX(-50%) translateX(calc(var(--i)*var(--gap,82px))) translateY(calc(var(--ai)*16px)) translateZ(calc(var(--ai)*-46px)) rotateZ(calc(var(--i)*7deg)) rotateY(calc(var(--i)*-14deg));
+  animation:rise 1s var(--ease) both; animation-delay:calc(.25s + var(--k)*.1s)}
+.rig .nf{animation:float 5s ease-in-out infinite; animation-delay:calc(var(--k)*-.9s)}
+@keyframes float{50%{transform:translateY(-12px)}}
+.rig .nail{--w:86px; --h:132px}
+.rig .nail::after{animation:sweep 5.5s ease-in-out infinite; animation-delay:calc(var(--k)*.15s)}
+@keyframes sweep{0%,55%{background-position:120% 0,0 0,0 0}85%,100%{background-position:-60% 0,0 0,0 0}}
+.rig.swap .nf{animation:flip .9s var(--ease)}
+@keyframes flip{0%{transform:rotateY(0)}100%{transform:rotateY(360deg)}}
+.hero-swatches{display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-top:-8px; position:relative; z-index:2}
+.sw{display:flex; align-items:center; gap:8px; padding:6px 14px 6px 6px; border-radius:999px; border:1px solid var(--line); background:var(--glass); font-size:.8rem; transition:border-color .3s, transform .3s var(--ease), background .3s}
+.sw .nail{--w:16px; --h:24px}
+.sw:hover{transform:translateY(-2px); border-color:var(--gold)}
+.sw[aria-pressed="true"]{border-color:var(--gold); background:rgba(217,180,90,.16); color:var(--gold-hi)}
+@media (max-width:900px){
+  .hero .wrap{grid-template-columns:1fr}
+  .stage{max-width:440px}
+  .rig .nail{--w:62px; --h:96px}
+  .rig .nw{--gap:58px}
+}
+
+/* Marquee */
+.marquee{border-block:1px solid var(--line); background:linear-gradient(90deg,var(--night-2),#14205a,var(--night-2)); overflow:hidden; padding-block:16px}
+.marquee-track{display:flex; width:max-content; animation:marq 38s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee-track span{display:flex; align-items:center; gap:22px; padding-right:22px; white-space:nowrap; font-family:var(--f-caps); letter-spacing:.24em; font-size:.82rem; text-transform:uppercase; color:var(--sand)}
+.marquee-track i{font-style:normal; font-family:var(--f-glyph); color:var(--gold); font-size:1.4rem; letter-spacing:0}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* Sections */
+section{position:relative}
+.sec{padding-block:110px}
+.sec-head{display:grid; gap:14px; margin-bottom:48px; max-width:720px}
+.sec-head.center{text-align:center; margin-inline:auto; justify-items:center}
+.sec-head h2{font-size:clamp(2.4rem,5vw,4rem)}
+.sec-head h2 em{font-style:italic; color:var(--gold-hi)}
+.sec-head p{color:var(--sand-dim); font-size:1.08rem; max-width:58ch}
+.divider{display:flex; align-items:center; gap:16px; color:var(--gold)}
+.divider::before,.divider::after{content:""; height:1px; width:60px; background:linear-gradient(90deg,transparent,var(--gold))}
+.divider::after{transform:scaleX(-1)}
+.divider svg{width:54px; height:20px}
+
+/* Dynasties (flip cards) */
+.dyn-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:20px}
+@media (max-width:1000px){.dyn-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.dyn-grid{grid-template-columns:1fr}}
+.dyn{perspective:1000px; height:340px; border:0; padding:0; background:none; text-align:left}
+.dyn-in{position:relative; width:100%; height:100%; transform-style:preserve-3d; transition:transform .9s var(--ease)}
+.dyn:hover .dyn-in,.dyn:focus-visible .dyn-in{transform:rotateY(180deg)}
+.dyn-face{position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden; border-radius:22px 22px 120px 120px / 22px 22px 60px 60px; border:1px solid var(--line-strong); overflow:hidden; padding:28px; display:flex; flex-direction:column; justify-content:flex-end; gap:8px}
+.dyn-front{background:var(--dbg)}
+.dyn-front::before{content:""; position:absolute; inset:0; background:linear-gradient(180deg,transparent 30%,rgba(5,8,22,.85))}
+.dyn-front > *{position:relative}
+.dyn-front .big-glyph{position:absolute; top:18px; right:22px; font-family:var(--f-glyph); font-size:5.5rem; line-height:1; color:rgba(255,240,200,.85); text-shadow:0 4px 20px rgba(0,0,0,.4)}
+.dyn-front h3{font-size:2.3rem}
+.dyn-front .eyebrow{color:var(--gold-hi)}
+.dyn-back{transform:rotateY(180deg); background:linear-gradient(160deg,#1a2660,var(--night)); justify-content:center; gap:16px}
+.dyn-back p{color:var(--sand-dim)}
+.dyn-back .mini-fan{display:flex; gap:6px; align-items:flex-end}
+.dyn-back .mini-fan .nail{--w:28px; --h:44px}
+.dyn-back .go{font-family:var(--f-caps); font-size:.75rem; letter-spacing:.22em; color:var(--gold-hi); text-transform:uppercase}
+
+/* Shop */
+.toolbar{display:flex; flex-wrap:wrap; justify-content:space-between; gap:16px; align-items:center; margin-bottom:34px}
+.tabs{display:flex; flex-wrap:wrap; gap:8px}
+.tab{border:1px solid var(--line); background:transparent; border-radius:999px; padding:9px 18px; font-family:var(--f-caps); font-size:.72rem; letter-spacing:.2em; text-transform:uppercase; color:var(--sand-dim); transition:all .3s}
+.tab:hover{color:var(--gold-hi); border-color:var(--gold)}
+.tab[aria-pressed="true"]{background:var(--gold); color:var(--ink); border-color:var(--gold); font-weight:700}
+.count-note{font-size:.85rem; color:var(--sand-dim)}
+.grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(270px,1fr)); gap:26px}
+.card{perspective:1000px; animation:rise .7s var(--ease) both; animation-delay:calc(var(--n,0)*60ms)}
+.card-in{position:relative; height:100%; display:flex; flex-direction:column; border-radius:24px; border:1px solid var(--line); background:linear-gradient(170deg,rgba(31,53,145,.28),rgba(10,15,36,.9) 60%); transform-style:preserve-3d; transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)); transition:transform .5s var(--ease), border-color .4s, box-shadow .4s}
+.card:hover .card-in{border-color:var(--line-strong); box-shadow:0 30px 60px -25px rgba(0,0,0,.8), 0 0 40px -10px rgba(217,180,90,.25)}
+.card.tracking .card-in{transition:transform .08s linear, border-color .4s, box-shadow .4s}
+.card-stage{position:relative; height:210px; border-radius:24px 24px 0 0; overflow:hidden; transform:translateZ(40px); transform-style:preserve-3d;
+  background:radial-gradient(ellipse 60% 55% at 50% 70%,rgba(217,180,90,.22),transparent 70%)}
+.card-stage::before{content:""; position:absolute; left:50%; bottom:16px; width:70%; height:26px; transform:translateX(-50%); border-radius:50%; background:radial-gradient(ellipse,rgba(0,0,0,.55),transparent 70%)}
+.fan{position:absolute; left:0; right:0; bottom:22px; height:100%}
+.fan .nw{position:absolute; left:50%; bottom:0; transform-origin:50% 190%; transform:translateX(-50%) rotate(calc(var(--i)*10deg)); transition:transform .7s var(--ease)}
+.card:hover .fan .nw{transform:translateX(-50%) rotate(calc(var(--i)*16deg)) translateY(-10px)}
+.card:hover .nail::after{--sx:-60%}
+.fan .nail{--w:44px; --h:70px}
+.tag{position:absolute; top:14px; left:14px; z-index:2; font-family:var(--f-caps); font-size:.62rem; letter-spacing:.2em; text-transform:uppercase; padding:5px 10px; border-radius:999px; background:var(--carnelian); color:#fff}
+.tag.t-gold{background:var(--gold); color:var(--ink)}
+.tag.t-teal{background:var(--faience); color:var(--ink)}
+.card-body{display:flex; flex-direction:column; gap:10px; padding:20px 22px 22px; flex:1; transform:translateZ(20px)}
+.card-coll{font-family:var(--f-caps); font-size:.66rem; letter-spacing:.26em; text-transform:uppercase; color:var(--gold)}
+.card h3{font-size:1.8rem}
+.blurb{font-size:.92rem; color:var(--sand-dim); flex:1}
+.card-row{display:flex; justify-content:space-between; align-items:center; gap:10px}
+.shapes{display:flex; gap:6px}
+.shp{width:30px; height:34px; display:grid; place-items:end center; padding-bottom:4px; border-radius:8px; border:1px solid var(--line); background:transparent; transition:all .25s}
+.shp .nail{--w:12px; --h:20px; --bg:linear-gradient(var(--sand-dim),var(--sand-dim))}
+.shp:hover{border-color:var(--gold)}
+.shp[aria-pressed="true"]{border-color:var(--gold); background:rgba(217,180,90,.15)}
+.shp[aria-pressed="true"] .nail{--bg:linear-gradient(var(--gold-hi),var(--gold))}
+.price{font-family:var(--f-display); font-size:1.7rem; font-weight:600; color:var(--gold-hi); font-variant-numeric:tabular-nums}
+.card .btn{width:100%; --pad:12px 20px}
+.glare{position:absolute; inset:0; border-radius:24px; pointer-events:none; opacity:0; transition:opacity .4s; background:radial-gradient(circle at var(--gx,50%) var(--gy,50%),rgba(255,240,200,.18),transparent 45%); mix-blend-mode:screen}
+.card:hover .glare{opacity:1}
+
+/* Atelier */
+.atelier{background:linear-gradient(180deg,transparent,rgba(31,53,145,.18) 20%,rgba(31,53,145,.18) 80%,transparent)}
+.atelier-grid{display:grid; grid-template-columns:1.1fr 1fr; gap:48px; align-items:start}
+@media (max-width:960px){.atelier-grid{grid-template-columns:1fr}}
+.preview-box{position:sticky; top:calc(env(safe-area-inset-top,0px) + 96px); border-radius:28px; border:1px solid var(--line-strong); background:radial-gradient(ellipse at 50% 30%,rgba(53,82,196,.35),rgba(10,15,36,.9) 70%); overflow:hidden; min-width:0}
+@media (max-width:960px){.preview-box{position:relative; top:0}}
+.preview-box .stage{max-width:520px; aspect-ratio:1/.86}
+.preview-box .rig .nw{bottom:24%}
+.preview-meta{display:flex; justify-content:space-between; align-items:flex-end; gap:16px; padding:0 26px 24px; flex-wrap:wrap}
+.preview-meta h3{font-size:2rem}
+.preview-meta p{color:var(--sand-dim); font-size:.9rem}
+.big-price{font-family:var(--f-display); font-size:3rem; color:var(--gold-hi); line-height:1; font-variant-numeric:tabular-nums}
+.hint{position:absolute; top:18px; left:22px; font-size:.75rem; letter-spacing:.14em; text-transform:uppercase; color:var(--sand-dim); display:flex; gap:8px; align-items:center}
+.hint::before{content:""; width:8px; height:8px; border-radius:50%; background:var(--faience); box-shadow:0 0 10px var(--faience); animation:pulse 2s infinite}
+.controls{display:grid; gap:30px; min-width:0}
+.ctl{display:grid; gap:12px}
+.ctl-label{display:flex; justify-content:space-between; align-items:baseline; gap:12px}
+.ctl-label span{font-family:var(--f-caps); font-size:.78rem; letter-spacing:.24em; text-transform:uppercase; color:var(--gold)}
+.ctl-label em{font-style:normal; font-size:.85rem; color:var(--sand-dim)}
+.design-picker{display:grid; grid-template-columns:repeat(auto-fill,minmax(64px,1fr)); gap:10px}
+.dp{display:grid; justify-items:center; gap:6px; padding:10px 4px 8px; border-radius:14px; border:1px solid var(--line); background:rgba(10,15,36,.5); transition:all .3s var(--ease)}
+.dp .nail{--w:24px; --h:38px}
+.dp small{font-size:.62rem; color:var(--sand-dim); line-height:1.2; text-align:center}
+.dp:hover{transform:translateY(-4px) rotate(-2deg); border-color:var(--gold)}
+.dp[aria-pressed="true"]{border-color:var(--gold); background:rgba(217,180,90,.14); box-shadow:0 0 24px -6px rgba(217,180,90,.6)}
+.dp[aria-pressed="true"] small{color:var(--gold-hi)}
+.seg{display:flex; flex-wrap:wrap; gap:8px}
+.seg button{flex:1 1 auto; border:1px solid var(--line); background:rgba(10,15,36,.5); border-radius:12px; padding:11px 14px; font-size:.88rem; transition:all .25s; display:flex; flex-direction:column; align-items:center; gap:2px}
+.seg button small{font-size:.7rem; color:var(--sand-dim)}
+.seg button:hover{border-color:var(--gold)}
+.seg button[aria-pressed="true"]{background:var(--gold); color:var(--ink); border-color:var(--gold); font-weight:500}
+.seg button[aria-pressed="true"] small{color:rgba(10,15,36,.7)}
+.field{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+.input{flex:1 1 200px; min-width:0; background:rgba(10,15,36,.6); border:1px solid var(--line-strong); border-radius:12px; padding:13px 16px; color:var(--sand); font:inherit; font-size:1rem}
+.input:focus{outline:none; border-color:var(--gold-hi); box-shadow:0 0 0 3px rgba(217,180,90,.2)}
+.switch{display:flex; align-items:center; gap:10px; font-size:.9rem; color:var(--sand-dim); cursor:pointer}
+.switch input{appearance:none; -webkit-appearance:none; width:44px; height:24px; border-radius:12px; background:rgba(255,255,255,.12); position:relative; cursor:pointer; transition:background .3s; margin:0}
+.switch input::after{content:""; position:absolute; top:3px; left:3px; width:18px; height:18px; border-radius:50%; background:var(--sand); transition:transform .3s var(--ease)}
+.switch input:checked{background:var(--gold)}
+.switch input:checked::after{transform:translateX(20px); background:var(--ink)}
+.nail .ncart{position:absolute; left:50%; top:52%; transform:translate(-50%,-50%); display:flex; flex-direction:column; align-items:center; padding:7px 3px 9px; border:1.5px solid var(--gold-hi); border-radius:999px; font-family:var(--f-glyph); color:var(--gold-hi); font-size:13px; line-height:1.05; background:rgba(10,15,36,.35); box-shadow:0 0 0 1px rgba(0,0,0,.3)}
+.nail .ncart::after{content:""; position:absolute; bottom:-5px; left:15%; right:15%; height:2px; background:var(--gold-hi)}
+
+/* Cartouche */
+.cartouche-sec .wrap{display:grid; gap:40px; justify-items:center; text-align:center}
+.cart-display{position:relative; display:inline-flex; align-items:center; gap:.08em; min-height:1.6em; max-width:100%; padding:.32em .9em .32em .7em; border:4px double var(--gold); border-radius:999px; font-family:var(--f-glyph); font-size:clamp(2.4rem,7vw,4.8rem); line-height:1; color:var(--gold-hi); background:radial-gradient(ellipse,rgba(217,180,90,.12),transparent 70%); box-shadow:0 0 60px -10px rgba(217,180,90,.35), inset 0 0 30px rgba(217,180,90,.1); text-shadow:0 0 20px rgba(246,226,164,.45); flex-wrap:wrap; justify-content:center}
+.cart-display::after{content:""; position:absolute; right:-22px; top:14%; bottom:14%; width:8px; border-radius:3px; background:linear-gradient(var(--gold-hi),var(--gold-lo))}
+.cart-display span{display:inline-block; animation:glyphIn .6s var(--ease) both}
+@keyframes glyphIn{from{opacity:0; transform:translateY(20px) scale(.6)}}
+.cart-field{width:min(520px,100%)}
+.glyph-key{display:flex; flex-wrap:wrap; gap:12px; justify-content:center; max-width:900px}
+.gk{width:86px; height:104px; perspective:600px}
+.gk-in{position:relative; width:100%; height:100%; transform-style:preserve-3d; transition:transform .7s var(--ease)}
+.gk:hover .gk-in{transform:rotateY(180deg)}
+.gk-f{position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden; display:grid; place-content:center; gap:4px; border-radius:14px; border:1px solid var(--line); background:rgba(16,24,57,.8)}
+.gk-f.front b{font-family:var(--f-glyph); font-weight:400; font-size:2.2rem; color:var(--gold-hi); line-height:1.1}
+.gk-f.front span{font-family:var(--f-caps); font-size:.8rem; letter-spacing:.2em; color:var(--sand-dim)}
+.gk-f.back{transform:rotateY(180deg); background:linear-gradient(160deg,var(--gold-hi),var(--gold-lo)); color:var(--ink); padding:8px}
+.gk-f.back b{font-family:var(--f-caps); font-size:1.1rem}
+.gk-f.back span{font-size:.72rem; line-height:1.2}
+
+/* Ritual */
+.ritual-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px; counter-reset:step}
+@media (max-width:860px){.ritual-grid{grid-template-columns:1fr}}
+.step{position:relative; padding:34px 28px 30px; border-radius:22px; border:1px solid var(--line); background:linear-gradient(170deg,rgba(31,53,145,.22),transparent); overflow:hidden; transition:transform .5s var(--ease), border-color .4s}
+.step:hover{transform:translateY(-6px); border-color:var(--line-strong)}
+.step::before{counter-increment:step; content:counter(step,upper-roman); position:absolute; right:20px; top:6px; font-family:var(--f-caps); font-size:4.2rem; color:rgba(217,180,90,.12)}
+.step svg{width:44px; height:44px; color:var(--gold); margin-bottom:16px}
+.step h3{font-size:1.7rem; margin-bottom:8px}
+.step p{color:var(--sand-dim); font-size:.95rem}
+.sizes{margin-top:56px; padding:34px; border-radius:24px; border:1px solid var(--line); background:rgba(10,15,36,.55)}
+.sizes-head{display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; margin-bottom:26px}
+.sizes-head h3{font-size:1.8rem}
+.sizes-head p{color:var(--sand-dim); font-size:.9rem; max-width:52ch}
+.size-row{display:flex; justify-content:space-between; align-items:flex-end; gap:8px; overflow-x:auto; padding-bottom:6px}
+.size{display:grid; justify-items:center; gap:8px; flex:1 0 46px; padding:10px 4px; border-radius:12px; transition:background .3s; cursor:default}
+.size:hover{background:rgba(217,180,90,.1)}
+.size .nail{--h:3.6px; --w:3.4px; --bg:linear-gradient(170deg,var(--gold-hi),var(--gold-lo))}
+.size b{font-family:var(--f-display); font-size:1.4rem; color:var(--gold-hi); line-height:1}
+.size span{font-size:.72rem; color:var(--sand-dim); font-variant-numeric:tabular-nums; white-space:nowrap}
+
+/* Join */
+.join{padding-block:40px 110px}
+.join-card{position:relative; overflow:hidden; border-radius:32px; padding:clamp(34px,6vw,70px); border:1px solid var(--line-strong); background:
+  radial-gradient(ellipse at 100% 0%,rgba(60,196,180,.25),transparent 50%),
+  radial-gradient(ellipse at 0% 100%,rgba(207,87,51,.22),transparent 50%),
+  linear-gradient(140deg,#16226a,#0c1230); display:grid; grid-template-columns:1.2fr 1fr; gap:40px; align-items:center}
+@media (max-width:860px){.join-card{grid-template-columns:1fr}}
+.join-card h2{font-size:clamp(2.2rem,4.6vw,3.6rem)}
+.join-card p{color:var(--sand-dim); margin-top:12px}
+.join-card form{display:flex; gap:10px; flex-wrap:wrap}
+.join-card .wing{position:absolute; right:-40px; bottom:-30px; width:340px; color:rgba(217,180,90,.08); pointer-events:none}
+
+/* Footer */
+footer{border-top:1px solid var(--line); padding-block:56px 40px; background:rgba(5,8,22,.6)}
+.foot{display:grid; grid-template-columns:1.5fr repeat(3,1fr); gap:30px}
+@media (max-width:760px){.foot{grid-template-columns:1fr 1fr}}
+.foot h4{font-family:var(--f-caps); font-size:.74rem; letter-spacing:.24em; text-transform:uppercase; color:var(--gold); margin:0 0 14px; font-weight:500}
+.foot ul{list-style:none; margin:0; padding:0; display:grid; gap:8px}
+.foot a{text-decoration:none; color:var(--sand-dim); font-size:.92rem; transition:color .25s}
+.foot a:hover{color:var(--gold-hi)}
+.foot-brand p{color:var(--sand-dim); font-size:.92rem; margin-top:14px; max-width:34ch}
+.foot-bottom{margin-top:44px; padding-top:22px; border-top:1px solid var(--line); display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; font-size:.8rem; color:var(--sand-dim)}
+.foot-bottom .g{font-family:var(--f-glyph); color:var(--gold); font-size:1.1rem}
+
+/* Drawer */
+.scrim{position:fixed; inset:0; z-index:80; background:rgba(3,5,15,.6); backdrop-filter:blur(4px); opacity:0; pointer-events:none; transition:opacity .4s}
+.scrim.open{opacity:1; pointer-events:auto}
+.drawer{position:fixed; top:0; right:0; bottom:0; z-index:90; width:min(420px,100vw); background:linear-gradient(170deg,#141d4a,#0a0f24); border-left:1px solid var(--line-strong); transform:translateX(105%); transition:transform .55s var(--ease); display:flex; flex-direction:column;
+  padding:calc(env(safe-area-inset-top,0px) + 24px) max(24px, env(safe-area-inset-right,0px)) calc(env(safe-area-inset-bottom,0px) + 24px) 24px}
+.drawer.open{transform:none}
+.drawer-head{display:flex; justify-content:space-between; align-items:center; padding-bottom:18px; border-bottom:1px solid var(--line)}
+.drawer-head h3{font-size:2rem}
+.x{width:40px; height:40px; border-radius:50%; border:1px solid var(--line); background:transparent; font-size:1.3rem; line-height:1}
+.x:hover{border-color:var(--gold); color:var(--gold-hi)}
+.bag-list{flex:1; overflow-y:auto; display:grid; align-content:start; gap:14px; padding-block:18px}
+.bag-item{display:grid; grid-template-columns:54px 1fr auto; gap:14px; align-items:center; padding:12px; border-radius:16px; border:1px solid var(--line); background:rgba(10,15,36,.5); animation:rise .4s var(--ease) both}
+.bag-item .nail{--w:30px; --h:48px; margin-inline:auto}
+.bag-item h4{margin:0; font-family:var(--f-display); font-size:1.25rem; font-weight:600; line-height:1.1}
+.bag-item p{font-size:.78rem; color:var(--sand-dim)}
+.qty{display:flex; align-items:center; gap:6px; margin-top:6px}
+.qty button{width:24px; height:24px; border-radius:50%; border:1px solid var(--line); background:transparent; line-height:1; font-size:.9rem}
+.qty button:hover{border-color:var(--gold)}
+.qty span{min-width:18px; text-align:center; font-size:.85rem}
+.bag-item .price{font-size:1.3rem}
+.empty{text-align:center; color:var(--sand-dim); padding:40px 10px; display:grid; gap:12px; justify-items:center}
+.empty b{font-family:var(--f-glyph); font-size:3rem; color:var(--gold); font-weight:400}
+.drawer-foot{border-top:1px solid var(--line); padding-top:18px; display:grid; gap:14px}
+.ship-bar{height:6px; border-radius:3px; background:rgba(255,255,255,.08); overflow:hidden}
+.ship-bar i{display:block; height:100%; width:var(--p,0%); background:linear-gradient(90deg,var(--faience),var(--gold)); transition:width .6s var(--ease)}
+.ship-note{font-size:.82rem; color:var(--sand-dim)}
+.total{display:flex; justify-content:space-between; align-items:baseline}
+.total span{font-family:var(--f-caps); font-size:.78rem; letter-spacing:.22em; text-transform:uppercase}
+
+.toast{position:fixed; left:50%; bottom:calc(env(safe-area-inset-bottom,0px) + 24px); z-index:100; transform:translate(-50%,140%); padding:14px 22px; border-radius:999px; background:var(--gold); color:var(--ink); font-weight:500; box-shadow:0 18px 40px -12px rgba(0,0,0,.7); transition:transform .5s var(--ease); max-width:calc(100vw - 32px); text-align:center; font-size:.92rem}
+.toast.show{transform:translate(-50%,0)}
+
+/* Flying nail to bag */
+.flyer{position:fixed; z-index:95; pointer-events:none; transition:transform .8s cubic-bezier(.5,-.3,.6,1), opacity .8s}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important; transition-duration:.01ms!important; scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="m-eye" viewBox="0 0 48 34"><g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6Q22 0 42 5"/><path d="M4 14Q20 4 40 13Q24 22 8 15"/><path d="M40 13H46"/><path d="M20 18V29"/><path d="M26 19Q32 29 38 26Q42 24 39 21Q37 19 35 22"/></g><circle cx="22" cy="12.5" r="4.4" fill="currentColor"/></symbol>
+  <symbol id="m-ankh" viewBox="0 0 24 32"><path fill="currentColor" fill-rule="evenodd" d="M12 1C8.2 1 6.2 4 6.2 7.2c0 2.6 1.4 4.8 3 6.3H3v3.2h7.4V31h3.2V16.7H21v-3.2h-6.2c1.6-1.5 3-3.7 3-6.3C17.8 4 15.8 1 12 1zm0 3.1c1.6 0 2.6 1.4 2.6 3.3 0 2.1-1.2 3.9-2.6 5.1-1.4-1.2-2.6-3-2.6-5.1 0-1.9 1-3.3 2.6-3.3z"/></symbol>
+  <symbol id="m-scarab" viewBox="0 0 32 36"><g fill="currentColor"><circle cx="16" cy="5" r="4"/><path d="M16 9c-3 0-5 1.2-6 3h12c-1-1.8-3-3-6-3z"/><path d="M9 13.5h6.2V34C10 33 7 28 7 22c0-3.5.7-6.4 2-8.5zM23 13.5h-6.2V34C22 33 25 28 25 22c0-3.5-.7-6.4-2-8.5z"/></g><g stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"><path d="M8 16 3 13M7.5 22 2 22M8.5 28 4 32M24 16l5-3M24.5 22H30M23.5 28l4.5 4"/></g></symbol>
+  <symbol id="m-lotus" viewBox="0 0 32 32"><g fill="currentColor"><path d="M16 27C13.5 20 13.5 10 16 3c2.5 7 2.5 17 0 24z"/><path d="M15 27C10 24 6.5 18 6.5 9.5 10.5 13 13.8 19 15 27z"/><path d="M17 27c5-3 8.5-9 8.5-17.5C21.5 13 18.2 19 17 27z"/><path d="M14 27.2C9 27.5 4 25 1.5 20.5 6 20.5 11 23 14 27.2zM18 27.2c5 .3 10-2.2 12.5-6.7C26 20.5 21 23 18 27.2z"/><rect x="9" y="28" width="14" height="2" rx="1"/></g></symbol>
+  <symbol id="m-pyramid" viewBox="0 0 32 28"><path fill="currentColor" d="M16 2 31 26H1z"/><path fill="rgba(0,0,0,.3)" d="M16 2 31 26H17z"/><g stroke="rgba(0,0,0,.2)" stroke-width=".8"><path d="M10 11.6h12M7 16.4h18M4 21.2h24"/></g></symbol>
+  <symbol id="m-disk" viewBox="0 0 32 32"><circle cx="16" cy="16" r="7" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M16 2v4M16 26v4M2 16h4M26 16h4M6 6l3 3M23 23l3 3M26 6l-3 3M6 26l3-3"/></g></symbol>
+  <symbol id="m-wing" viewBox="0 0 64 24"><g fill="currentColor"><circle cx="32" cy="12" r="6"/><path d="M25 10C18 4 8 3 1 6c5 1 8 2.5 10 4-3 0-6 .5-8 2 5 0 10 .5 14 2-2 .5-4 1.5-5 3 5-1.5 10-2 13-2z"/><path d="M39 10c7-6 17-7 24-4-5 1-8 2.5-10 4 3 0 6 .5 8 2-5 0-10 .5-14 2 2 .5 4 1.5 5 3-5-1.5-10-2-13-2z"/></g></symbol>
+  <symbol id="i-bag" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M4 8h16l-1.3 12.2a1 1 0 0 1-1 .8H6.3a1 1 0 0 1-1-.8z"/><path d="M8.5 10V6.5a3.5 3.5 0 0 1 7 0V10"/></g></symbol>
+</svg>
+
+<div class="sky" aria-hidden="true"></div>
+<canvas id="dust" aria-hidden="true"></canvas>
+
+<div class="page">
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Nayls home"><svg><use href="#m-wing"/></svg><b class="gold-text">NAYLS</b></a>
+    <ul class="nav-links">
+      <li><a href="#shop">Shop</a></li>
+      <li><a href="#atelier">Atelier</a></li>
+      <li><a href="#cartouche">Cartouche</a></li>
+      <li><a href="#ritual">Sizing</a></li>
+    </ul>
+    <button class="bag-btn" id="bagBtn" aria-label="Open bag"><svg><use href="#i-bag"/></svg>Bag <span class="bag-count" id="bagCount">0</span></button>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-copy">
+      <p class="eyebrow">Luxury press-on nails &nbsp;·&nbsp; Egyptian collection</p>
+      <h1>Nails fit for a <em class="gold-text">queen of the Nile.</em></h1>
+      <p class="hero-lede">Gold leaf, lapis blue and scarab shimmer, sculpted into salon-grade press-ons. Ten minutes at home, and you walk out looking like a pharaoh.</p>
+      <div class="hero-cta">
+        <a class="btn btn-gold" href="#shop">Shop the collection</a>
+        <a class="btn btn-ghost" href="#atelier">Design your own set</a>
+      </div>
+      <div class="hero-facts">
+        <div><b>16</b><span>Designs</span></div>
+        <div><b>5</b><span>Nail shapes</span></div>
+        <div><b>24</b><span>Nails per set</span></div>
+        <div><b>10&nbsp;min</b><span>To apply</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="stage" id="heroStage">
+        <div class="halo"></div>
+        <svg class="glyph-ring" viewBox="0 0 500 500" aria-hidden="true">
+          <defs><path id="ringPath" d="M250,250 m-225,0 a225,225 0 1,1 450,0 a225,225 0 1,1 -450,0"/><path id="ringPath2" d="M250,250 m-190,0 a190,190 0 1,1 380,0 a190,190 0 1,1 -380,0"/></defs>
+          <text><textPath href="#ringPath" id="ringText"></textPath></text>
+          <g class="r2" opacity=".45"><text><textPath href="#ringPath2" id="ringText2"></textPath></text></g>
+        </svg>
+        <div class="pedestal"></div>
+        <div class="rig-auto"><div class="rig" id="heroRig"></div></div>
+      </div>
+      <div class="hero-swatches" id="heroSwatches" role="group" aria-label="Preview a design"></div>
+    </div>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true"><div class="marquee-track" id="marquee"></div></div>
+
+<section class="sec" id="dynasties">
+  <div class="wrap">
+    <div class="sec-head center">
+      <div class="divider"><svg><use href="#m-wing"/></svg></div>
+      <p class="eyebrow">Four dynasties</p>
+      <h2>Pick your <em>kingdom</em></h2>
+      <p>Every Nayls design belongs to one of four collections, each drawn from a corner of ancient Egypt. Hover to turn the stone, tap to shop it.</p>
+    </div>
+    <div class="dyn-grid" id="dynGrid"></div>
+  </div>
+</section>
+
+<section class="sec" id="shop" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">The treasury</p>
+      <h2>Sixteen sets, <em>zero salon visits</em></h2>
+      <p>Switch the shape on any set before you add it. Each box holds 24 nails across sizes 0–9, adhesive tabs, glue, a file and a cuticle stick.</p>
+    </div>
+    <div class="toolbar">
+      <div class="tabs" id="tabs" role="group" aria-label="Filter by collection"></div>
+      <p class="count-note" id="countNote"></p>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<section class="sec atelier" id="atelier">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">The atelier</p>
+      <h2>Build a set <em>worthy of a tomb</em></h2>
+      <p>Choose the art, the shape, the length and the finish. Add your name in hieroglyphs to the ring finger. The preview updates as you go, so move your cursor over it to inspect every angle.</p>
+    </div>
+    <div class="atelier-grid">
+      <div class="preview-box">
+        <p class="hint">Live 3D preview</p>
+        <div class="stage" id="buildStage">
+          <div class="halo" style="inset:18%"></div>
+          <div class="pedestal" style="bottom:12%"></div>
+          <div class="rig" id="buildRig"></div>
+        </div>
+        <div class="preview-meta">
+          <div><h3 id="bName">Eye of Ra</h3><p id="bDesc">Coffin · Medium · Gloss</p></div>
+          <div class="big-price" id="bPrice">$28</div>
+        </div>
+      </div>
+      <div class="controls">
+        <div class="ctl">
+          <div class="ctl-label"><span>Artwork</span><em id="bDesignNote"></em></div>
+          <div class="design-picker" id="designPicker" role="group" aria-label="Artwork"></div>
+        </div>
+        <div class="ctl">
+          <div class="ctl-label"><span>Shape</span></div>
+          <div class="seg" id="shapeSeg" role="group" aria-label="Shape"></div>
+        </div>
+        <div class="ctl">
+          <div class="ctl-label"><span>Length</span></div>
+          <div class="seg" id="lenSeg" role="group" aria-label="Length"></div>
+        </div>
+        <div class="ctl">
+          <div class="ctl-label"><span>Finish</span></div>
+          <div class="seg" id="finSeg" role="group" aria-label="Finish"></div>
+        </div>
+        <div class="ctl">
+          <div class="ctl-label"><span>Cartouche accent</span><em>+$6</em></div>
+          <label class="switch" for="cartToggle"><input type="checkbox" id="cartToggle"> Write a name in hieroglyphs on the ring finger</label>
+          <input class="input" id="cartName" maxlength="8" placeholder="Name (up to 8 letters)" value="Nour" aria-label="Name for the cartouche">
+        </div>
+        <button class="btn btn-gold" id="buildAdd" style="--pad:18px 26px">Add custom set to bag</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec cartouche-sec" id="cartouche">
+  <div class="wrap">
+    <div class="sec-head center">
+      <div class="divider"><svg><use href="#m-wing"/></svg></div>
+      <p class="eyebrow">Your name, carved in gold</p>
+      <h2>Write it <em>like a pharaoh</em></h2>
+      <p>Royal names were written inside a cartouche, an oval rope loop meant to protect them forever. Type a name to see it in the Egyptian sound signs. Hover a sign to read what it pictures.</p>
+    </div>
+    <div class="cart-display" id="cartDisplay" aria-live="polite"></div>
+    <div class="field cart-field">
+      <input class="input" id="cartInput" maxlength="12" value="Nefertiti" aria-label="Type a name">
+      <button class="btn btn-gold" id="cartUse">Put it on my nails</button>
+    </div>
+    <div class="glyph-key" id="glyphKey"></div>
+  </div>
+</section>
+
+<section class="sec" id="ritual">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">The ritual</p>
+      <h2>Salon nails in <em>three steps</em></h2>
+      <p>Applied with glue, a set lasts up to two weeks. Use the adhesive tabs for a few days of wear, then pop them off and wear them again.</p>
+    </div>
+    <div class="ritual-grid">
+      <article class="step">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="8" y="20" width="32" height="8" rx="4"/><path d="M14 20v8M20 20v8M26 20v8M32 20v8"/><path d="M24 6v6M16 9l3 4M32 9l-3 4"/></svg>
+        <h3>Prepare</h3>
+        <p>Push back cuticles, buff the shine off your natural nail, then wipe with alcohol so nothing sits between nail and glue.</p>
+      </article>
+      <article class="step">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 34h36M10 34v-5M16 34v-3M22 34v-5M28 34v-3M34 34v-5M40 34v-3"/><path d="M18 26c0-8 2.5-14 6-16 3.5 2 6 8 6 16"/></svg>
+        <h3>Size</h3>
+        <p>Lay out the 24 nails and match one to each finger. If you are between sizes, pick the larger one and file the sides.</p>
+      </article>
+      <article class="step">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M18 40V16a4 4 0 0 1 8 0v10l9 2a4 4 0 0 1 3 4.5L36.5 40"/><path d="M22 6v3M12 10l2 2M32 10l-2 2"/></svg>
+        <h3>Press</h3>
+        <p>Add a drop of glue or a tab, press at an angle from the cuticle down, and hold firmly for 30 seconds. Done.</p>
+      </article>
+    </div>
+    <div class="sizes">
+      <div class="sizes-head">
+        <h3>Size guide</h3>
+        <p>Measure each nail across its widest point in millimetres and match it to the closest size below. Thumbs are usually 0–2, pinkies 8–9.</p>
+      </div>
+      <div class="size-row" id="sizeRow"></div>
+    </div>
+  </div>
+</section>
+
+<section class="join">
+  <div class="wrap">
+    <div class="join-card">
+      <svg class="wing" aria-hidden="true"><use href="#m-wing"/></svg>
+      <div>
+        <p class="eyebrow">Join the dynasty</p>
+        <h2>First look at new drops, <em class="gold-text">10% off</em> your first set.</h2>
+        <p>One letter a month. New artwork, restocks and the occasional tomb-raid sale.</p>
+      </div>
+      <form id="joinForm" novalidate>
+        <input class="input" type="email" id="joinEmail" placeholder="you@example.com" aria-label="Email address" required>
+        <button class="btn btn-gold" type="submit">Join</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a class="logo" href="#top"><svg><use href="#m-wing"/></svg><b class="gold-text">NAYLS</b></a>
+        <p>Egyptian-inspired press-on nails. Reusable, salon-grade, and made to be noticed.</p>
+      </div>
+      <div><h4>Shop</h4><ul><li><a href="#shop" data-filter="Pharaoh">Pharaoh</a></li><li><a href="#shop" data-filter="Nile">Nile</a></li><li><a href="#shop" data-filter="Desert">Desert</a></li><li><a href="#shop" data-filter="Temple">Temple</a></li></ul></div>
+      <div><h4>Make</h4><ul><li><a href="#atelier">Custom set</a></li><li><a href="#cartouche">Name cartouche</a></li><li><a href="#ritual">Size guide</a></li></ul></div>
+      <div><h4>Help</h4><ul><li><a href="#ritual">How to apply</a></li><li><a href="#ritual">How to remove</a></li><li><a href="#top">Shipping &amp; returns</a></li></ul></div>
+    </div>
+    <div class="foot-bottom"><span>© 2026 Nayls. All rights reserved.</span><span class="g">𓋹 𓂀 𓆣 𓇳</span></div>
+  </div>
+</footer>
+</div>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-label="Your bag" aria-hidden="true">
+  <div class="drawer-head"><h3>Your bag</h3><button class="x" id="closeBag" aria-label="Close bag">×</button></div>
+  <div class="bag-list" id="bagList"></div>
+  <div class="drawer-foot">
+    <div class="ship-bar"><i id="shipBar"></i></div>
+    <p class="ship-note" id="shipNote"></p>
+    <div class="total"><span>Subtotal</span><b class="price" id="subtotal">$0</b></div>
+    <button class="btn btn-gold" id="checkout">Checkout</button>
+  </div>
+</aside>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(() => {
+const CUR = '$';
+const FREE_SHIP = 50;
+const money = n => CUR + (Math.round(n * 100) / 100).toFixed(n % 1 ? 2 : 0);
+const $ = s => document.querySelector(s);
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const DESIGNS = [
+  {id:'eye-of-ra', name:'Eye of Ra', coll:'Pharaoh', price:28, tag:['Bestseller','t-gold'], motif:'eye', mc:'#f2cf74', pair:'nemes', shape:'coffin',
+   blurb:'Midnight lapis scattered with gold dust, crowned by the all-seeing eye.',
+   bg:'radial-gradient(circle, #f5dc94 .8px, transparent 1.5px) 0 0/8px 10px, radial-gradient(circle at 30% 20%, #3a55c4, #1b2a6b 45%, #0d1440)'},
+  {id:'nemes', name:'Nemes', coll:'Pharaoh', price:26, shape:'square',
+   blurb:'The striped royal headdress in blue and gold, translated to ten tips.',
+   bg:'linear-gradient(180deg, rgba(255,255,255,.18), transparent 40%), repeating-linear-gradient(180deg, #e2b84f 0 7px, #c99a33 7px 8px, #1f3591 8px 14px)'},
+  {id:'cleopatra', name:'Cleopatra Chrome', coll:'Pharaoh', price:32, tag:['Chrome','t-gold'], shape:'almond',
+   blurb:'Liquid-gold mirror finish. Catches every light in the room.',
+   bg:'linear-gradient(125deg, #7a5a1c, #f7e3a1 22%, #b48a2c 40%, #fff2c4 55%, #8c6420 72%, #e8c56a)'},
+  {id:'ankh-noir', name:'Ankh Noir', coll:'Pharaoh', price:27, motif:'ankh', mc:'#e8c56a', pair:'cleopatra', shape:'stiletto',
+   blurb:'Glossy obsidian black with a hand-gilded key of life.',
+   bg:'radial-gradient(ellipse at 30% 15%, #34343c, #121216 50%, #050507)'},
+  {id:'anubis', name:'Anubis', coll:'Pharaoh', price:27, shape:'coffin', tag:['New',''],
+   blurb:'Jackal black cut with fine gold pinstripes. Quietly dangerous.',
+   bg:'repeating-linear-gradient(135deg, transparent 0 9px, #d9b45a 9px 10.5px), linear-gradient(180deg, #17171d, #050507)'},
+  {id:'nile-faience', name:'Nile Faience', coll:'Nile', price:25, motif:'lotus', mc:'#0f3b52', shape:'oval',
+   blurb:'The turquoise glaze of temple amulets, with a pressed lotus.',
+   bg:'radial-gradient(circle at 35% 25%, #8fe9dc, #3cc4b4 40%, #137067)'},
+  {id:'lotus-bloom', name:'Lotus Bloom', coll:'Nile', price:24, motif:'lotus', mc:'#b8862f', pair:'hathor-milk', shape:'almond', tag:['Soft glam','t-teal'],
+   blurb:'Blush petals and a gold lotus, for brides and soft-glam days.',
+   bg:'linear-gradient(180deg, #f8ddd5, #f2b6b0 60%, #e48e8e)'},
+  {id:'malachite', name:'Malachite', coll:'Nile', price:26, shape:'square',
+   blurb:'Banded green stone, the colour Egyptians ground into eyeliner.',
+   bg:'repeating-radial-gradient(circle at 20% 115%, #0d5a3c 0 4px, #1e8f5f 4px 7px, #48c991 7px 9px, #0b4a31 9px 13px)'},
+  {id:'hathor-milk', name:'Hathor Milk', coll:'Nile', price:24, shape:'oval',
+   blurb:'Milky sheer white with floating gold-foil flakes.',
+   bg:'radial-gradient(circle at 70% 30%, #e7c56b 0 2px, transparent 2.6px), radial-gradient(circle at 30% 58%, #e7c56b 0 1.6px, transparent 2.2px), radial-gradient(circle at 62% 76%, #f5dc94 0 2.6px, transparent 3.2px), radial-gradient(circle at 40% 22%, #f5dc94 0 1.2px, transparent 1.8px), linear-gradient(180deg, #fdf8f0, #ece3d4)'},
+  {id:'sahara', name:'Sahara Ombré', coll:'Desert', price:24, motif:'disk', mc:'#fff1c9', shape:'almond',
+   blurb:'Dune sand melting into a red-hot sunset.',
+   bg:'linear-gradient(180deg, #f6cd88, #e08a3c 55%, #b5462a)'},
+  {id:'giza-dusk', name:'Giza at Dusk', coll:'Desert', price:29, motif:'pyramid', mc:'#f5c35a', shape:'coffin', tag:['Bestseller','t-gold'],
+   blurb:'A violet desert sky and the Great Pyramid glowing gold.',
+   bg:'radial-gradient(circle, #fff .6px, transparent 1.2px) 0 0/9px 13px, linear-gradient(180deg, #24175a, #8c3d7a 55%, #f08a4b)'},
+  {id:'desert-rose', name:'Desert Rose', coll:'Desert', price:26, shape:'stiletto',
+   blurb:'Rose-gold shimmer, dense enough to sparkle across a room.',
+   bg:'radial-gradient(circle, rgba(255,240,230,.95) .7px, transparent 1.3px) 0 0/6px 7px, radial-gradient(circle, rgba(255,215,190,.7) .6px, transparent 1.2px) 3px 4px/7px 6px, linear-gradient(160deg, #e7a99a, #b76e79 55%, #8a4a5c)'},
+  {id:'scarab', name:'Scarab Dawn', coll:'Temple', price:30, motif:'scarab', mc:'#f5dc94', shape:'coffin', tag:['Iridescent','t-teal'],
+   blurb:'Beetle-wing iridescence that shifts teal to violet as you move.',
+   bg:'linear-gradient(160deg, #0f5c4d, #1fa38c 30%, #3b2e8f 65%, #7a2f88)'},
+  {id:'papyrus', name:'Papyrus', coll:'Temple', price:27, glyph:'𓋹<br>𓂀<br>𓆣', mc:'#5b3e15', shape:'square',
+   blurb:'Aged reed paper inscribed with the ankh, the eye and the scarab.',
+   bg:'repeating-linear-gradient(90deg, rgba(120,90,40,.13) 0 2px, transparent 2px 6px), repeating-linear-gradient(0deg, rgba(120,90,40,.08) 0 1px, transparent 1px 9px), linear-gradient(180deg, #f1e3bd, #d6bb84)'},
+  {id:'carnelian', name:'Carnelian', coll:'Temple', price:25, shape:'almond',
+   blurb:'Polished blood-orange stone, the gem of royal signet rings.',
+   bg:'repeating-radial-gradient(circle at 70% 85%, rgba(255,200,170,.13) 0 3px, transparent 3px 9px), radial-gradient(ellipse at 30% 30%, #f5875a, #cf5733 40%, #6e1a12)'},
+  {id:'sun-tip', name:'Sun Disk French', coll:'Temple', price:24, shape:'oval',
+   blurb:'A nude base with a gilded tip. Everyday, but make it divine.',
+   bg:'linear-gradient(0deg, #ecd0bd 0 63%, #b8862f 63% 64.5%, #f6e2a4 64.5% 72%, #d9b45a 85%, #a57a26)'}
+];
+const byId = Object.fromEntries(DESIGNS.map(d => [d.id, d]));
+const COLLS = {
+  Pharaoh:{glyph:'𓋹', bg:'radial-gradient(circle at 70% 20%, #3552c4, #1f3591 40%, #0d1440)', text:'Gold, lapis and obsidian. Everything a ruler wears on the throne.', designs:['eye-of-ra','nemes','ankh-noir']},
+  Nile:{glyph:'𓆸', bg:'radial-gradient(circle at 70% 20%, #4fd3c2, #1f8f88 45%, #0b3b44)', text:'Turquoise, lotus and malachite from the river that fed an empire.', designs:['nile-faience','lotus-bloom','malachite']},
+  Desert:{glyph:'𓇳', bg:'radial-gradient(circle at 70% 20%, #f6b35f, #c4572e 45%, #3d1630)', text:'Sunset ombrés and pyramid skylines from the edge of the Sahara.', designs:['sahara','giza-dusk','desert-rose']},
+  Temple:{glyph:'𓆣', bg:'radial-gradient(circle at 70% 20%, #c9a24a, #7a4a20 45%, #24120a)', text:'Scarabs, papyrus and carnelian, the sacred treasures of the priests.', designs:['scarab','papyrus','carnelian']}
+};
+const SHAPES = [{id:'coffin',label:'Coffin'},{id:'almond',label:'Almond'},{id:'stiletto',label:'Stiletto'},{id:'square',label:'Square'},{id:'oval',label:'Oval'}];
+const LENGTHS = [{id:'short',label:'Short',len:.8,add:0},{id:'medium',label:'Medium',len:1,add:0},{id:'long',label:'Long',len:1.2,add:4},{id:'xl',label:'Extra long',len:1.38,add:6}];
+const FINISHES = [{id:'gloss',label:'Gloss',add:0},{id:'matte',label:'Matte',add:0},{id:'chrome',label:'Chrome',add:5}];
+
+/* Hieroglyph alphabet (uniliteral signs) */
+const GLYPHS = {
+  sh:['𓈙','pool of water'], kh:['𓐍','placenta'], ch:['𓍿','tethering rope'],
+  a:['𓄿','vulture'], b:['𓃀','foot'], c:['𓎡','basket'], d:['𓂧','hand'], e:['𓇋','reed leaf'], f:['𓆑','horned viper'],
+  g:['𓎼','jar stand'], h:['𓉔','reed shelter'], i:['𓇋','reed leaf'], j:['𓆓','cobra'], k:['𓎡','basket'], l:['𓃭','lion'],
+  m:['𓅓','owl'], n:['𓈖','water'], o:['𓍯','lasso'], p:['𓊪','stool'], q:['𓈎','hill slope'], r:['𓂋','mouth'],
+  s:['𓋴','folded cloth'], t:['𓏏','bread loaf'], u:['𓅱','quail chick'], v:['𓆑','horned viper'], w:['𓅱','quail chick'],
+  x:['𓎡𓋴','basket + cloth'], y:['𓇌','two reeds'], z:['𓊃','door bolt']
+};
+function toGlyphs(name){
+  const s = (name || '').toLowerCase().replace(/[^a-z]/g, '');
+  const out = [];
+  for (let i = 0; i < s.length; i++) {
+    const two = s.slice(i, i + 2);
+    if (GLYPHS[two]) { out.push([two, ...GLYPHS[two]]); i++; continue; }
+    if (GLYPHS[s[i]]) out.push([s[i], ...GLYPHS[s[i]]]);
+  }
+  return out;
+}
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+/* Nail rendering */
+function nail(d, shape, inner = '') {
+  const motif = d.motif ? `<svg class="motif" aria-hidden="true"><use href="#m-${d.motif}"/></svg>` : d.glyph ? `<span class="glyphs">${d.glyph}</span>` : '';
+  return `<span class="nail s-${shape}" style="--bg:${d.bg};--m:${d.mc || '#f5dc94'}">${motif}${inner}</span>`;
+}
+const SCALES = [.86, .97, 1.06, .97, .8];
+function fan(d, shape, opts = {}) {
+  let html = '';
+  for (let k = 0; k < 5; k++) {
+    const i = k - 2;
+    const use = d.pair && (k === 1 || k === 3) ? byId[d.pair] : d;
+    const inner = (opts.cart && k === 3) ? `<span class="ncart">${opts.cart}</span>` : '';
+    const nd = (opts.cart && k === 3) ? Object.assign({}, use, {motif:null, glyph:null}) : use;
+    html += `<span class="nw" style="--i:${i};--ai:${Math.abs(i)};--k:${k};--s:${SCALES[k]};z-index:${5 - Math.abs(i)}"><span class="nf">${nail(nd, shape, inner)}</span></span>`;
+  }
+  return html;
+}
+
+/* ---------- HERO ---------- */
+const heroRig = $('#heroRig');
+let heroDesign = 'eye-of-ra';
+function renderHero(animate) {
+  const d = byId[heroDesign];
+  heroRig.innerHTML = fan(d, d.shape);
+  if (animate) { heroRig.classList.remove('swap'); void heroRig.offsetWidth; heroRig.classList.add('swap'); heroRig.querySelectorAll('.nw').forEach(n => n.style.animation = 'none'); }
+}
+renderHero();
+const heroPicks = ['eye-of-ra', 'scarab', 'giza-dusk', 'lotus-bloom', 'cleopatra'];
+$('#heroSwatches').innerHTML = heroPicks.map(id => `<button class="sw" data-id="${id}" aria-pressed="${id === heroDesign}">${nail(byId[id], 'almond')}${byId[id].name}</button>`).join('');
+$('#heroSwatches').addEventListener('click', e => {
+  const b = e.target.closest('.sw'); if (!b) return;
+  heroDesign = b.dataset.id; userPicked = true;
+  document.querySelectorAll('#heroSwatches .sw').forEach(x => x.setAttribute('aria-pressed', x === b));
+  renderHero(true);
+});
+let userPicked = false;
+if (!reduce) setInterval(() => {
+  if (userPicked || document.hidden) return;
+  heroDesign = heroPicks[(heroPicks.indexOf(heroDesign) + 1) % heroPicks.length];
+  document.querySelectorAll('#heroSwatches .sw').forEach(x => x.setAttribute('aria-pressed', x.dataset.id === heroDesign));
+  renderHero(true);
+}, 4200);
+
+const ringGlyphs = '𓋹 𓂀 𓆣 𓇳 𓊽 𓋴 𓈖 𓁹 𓆸 𓄿 𓅓 𓃭 𓊪 𓏏 ';
+$('#ringText').textContent = ringGlyphs.repeat(3);
+$('#ringText2').textContent = ringGlyphs.repeat(2);
+
+function stageTilt(stage, rig, mx = 26, my = 16) {
+  stage.addEventListener('pointermove', e => {
+    const r = stage.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+    rig.style.setProperty('--ry', (x * mx * 2).toFixed(1) + 'deg');
+    rig.style.setProperty('--rx', (6 - y * my * 2).toFixed(1) + 'deg');
+  });
+  stage.addEventListener('pointerleave', () => { rig.style.setProperty('--ry', '0deg'); rig.style.setProperty('--rx', '6deg'); });
+}
+stageTilt($('#heroStage'), heroRig);
+
+/* ---------- MARQUEE ---------- */
+const mq = ['Free shipping over ' + money(FREE_SHIP), '𓋹', '24 nails in every set', '𓂀', 'Reusable up to 3 wears', '𓆣', 'Lasts up to 2 weeks', '𓇳', 'Vegan & cruelty-free', '𓆸', 'Custom hieroglyph cartouches', '𓊽'];
+const mqHTML = '<span>' + mq.map(t => t.length <= 2 ? `<i>${t}</i>` : t).join('') + '</span>';
+$('#marquee').innerHTML = mqHTML + mqHTML;
+
+/* ---------- DYNASTIES ---------- */
+$('#dynGrid').innerHTML = Object.entries(COLLS).map(([name, c]) => `
+  <button class="dyn" data-coll="${name}" aria-label="Shop the ${name} collection">
+    <div class="dyn-in">
+      <div class="dyn-face dyn-front" style="--dbg:${c.bg}">
+        <span class="big-glyph">${c.glyph}</span>
+        <p class="eyebrow">${DESIGNS.filter(d => d.coll === name).length} designs</p>
+        <h3>${name}</h3>
+      </div>
+      <div class="dyn-face dyn-back">
+        <div class="mini-fan">${c.designs.map(id => nail(byId[id], byId[id].shape)).join('')}</div>
+        <h3 style="font-size:1.9rem">${name}</h3>
+        <p>${c.text}</p>
+        <span class="go">Shop ${name} →</span>
+      </div>
+    </div>
+  </button>`).join('');
+$('#dynGrid').addEventListener('click', e => {
+  const b = e.target.closest('.dyn'); if (!b) return;
+  setFilter(b.dataset.coll); $('#shop').scrollIntoView({behavior: reduce ? 'auto' : 'smooth'});
+});
+
+/* ---------- SHOP ---------- */
+let filter = 'All';
+const cardShape = {};
+const tabsEl = $('#tabs');
+tabsEl.innerHTML = ['All', ...Object.keys(COLLS)].map(t => `<button class="tab" data-f="${t}" aria-pressed="${t === filter}">${t}</button>`).join('');
+tabsEl.addEventListener('click', e => { const b = e.target.closest('.tab'); if (b) setFilter(b.dataset.f); });
+function setFilter(f) {
+  filter = f;
+  tabsEl.querySelectorAll('.tab').forEach(t => t.setAttribute('aria-pressed', t.dataset.f === f));
+  renderGrid();
+}
+const CARD_SHAPES = ['coffin', 'almond', 'stiletto', 'square'];
+function cardHTML(d, n) {
+  const shape = cardShape[d.id] || d.shape;
+  const tag = d.tag ? `<span class="tag ${d.tag[1]}">${d.tag[0]}</span>` : '';
+  return `<article class="card" data-id="${d.id}" style="--n:${n}">
+    <div class="card-in">
+      <div class="card-stage">${tag}<div class="fan">${fan(d, shape)}</div></div>
+      <div class="card-body">
+        <p class="card-coll">${d.coll}</p>
+        <h3>${d.name}</h3>
+        <p class="blurb">${d.blurb}</p>
+        <div class="card-row">
+          <div class="shapes" role="group" aria-label="Shape">${CARD_SHAPES.map(s => `<button class="shp" data-shape="${s}" aria-pressed="${s === shape}" title="${s[0].toUpperCase() + s.slice(1)}" aria-label="${s}"><span class="nail s-${s}"></span></button>`).join('')}</div>
+          <span class="price">${money(d.price)}</span>
+        </div>
+        <button class="btn btn-gold add">Add to bag</button>
+      </div>
+      <span class="glare"></span>
+    </div>
+  </article>`;
+}
+function renderGrid() {
+  const list = DESIGNS.filter(d => filter === 'All' || d.coll === filter);
+  $('#grid').innerHTML = list.map(cardHTML).join('');
+  $('#countNote').textContent = `${list.length} ${list.length === 1 ? 'set' : 'sets'} · prices per set of 24`;
+}
+renderGrid();
+const grid = $('#grid');
+grid.addEventListener('click', e => {
+  const card = e.target.closest('.card'); if (!card) return;
+  const d = byId[card.dataset.id];
+  const shp = e.target.closest('.shp');
+  if (shp) {
+    cardShape[d.id] = shp.dataset.shape;
+    card.querySelectorAll('.card-stage .nail').forEach(n => n.className = n.className.replace(/s-\w+/, 's-' + shp.dataset.shape));
+    card.querySelectorAll('.shp').forEach(b => b.setAttribute('aria-pressed', b === shp));
+    return;
+  }
+  if (e.target.closest('.add')) {
+    const shape = cardShape[d.id] || d.shape;
+    addToBag({key: `${d.id}|${shape}`, design: d.id, shape, title: d.name, detail: `${cap(shape)} · Medium · Gloss`, price: d.price}, card.querySelector('.card-stage .nw:nth-child(3) .nail'));
+  }
+});
+grid.addEventListener('pointermove', e => {
+  const card = e.target.closest('.card'); if (!card || e.pointerType === 'touch') return;
+  const inEl = card.querySelector('.card-in');
+  const r = inEl.getBoundingClientRect();
+  const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+  card.classList.add('tracking');
+  inEl.style.setProperty('--ry', ((x - .5) * 16).toFixed(1) + 'deg');
+  inEl.style.setProperty('--rx', ((.5 - y) * 12).toFixed(1) + 'deg');
+  inEl.style.setProperty('--gx', (x * 100).toFixed(0) + '%');
+  inEl.style.setProperty('--gy', (y * 100).toFixed(0) + '%');
+});
+grid.addEventListener('pointerout', e => {
+  const card = e.target.closest('.card'); if (!card || card.contains(e.relatedTarget)) return;
+  card.classList.remove('tracking');
+  const inEl = card.querySelector('.card-in'); inEl.style.setProperty('--rx', '0deg'); inEl.style.setProperty('--ry', '0deg');
+});
+const cap = s => s[0].toUpperCase() + s.slice(1);
+
+/* ---------- ATELIER ---------- */
+const B = {design:'eye-of-ra', shape:'coffin', len:'medium', finish:'gloss', cart:false, name:'Nour'};
+const buildRig = $('#buildRig');
+$('#designPicker').innerHTML = DESIGNS.map(d => `<button class="dp" data-id="${d.id}" aria-pressed="${d.id === B.design}" aria-label="${d.name}">${nail(d, 'almond')}<small>${d.name}</small></button>`).join('');
+const segHTML = (arr, cur, extra) => arr.map(o => `<button data-v="${o.id}" aria-pressed="${o.id === cur}">${o.label}${extra ? `<small>${extra(o)}</small>` : ''}</button>`).join('');
+$('#shapeSeg').innerHTML = segHTML(SHAPES, B.shape);
+$('#lenSeg').innerHTML = segHTML(LENGTHS, B.len, o => o.add ? '+' + money(o.add) : 'Included');
+$('#finSeg').innerHTML = segHTML(FINISHES, B.finish, o => o.add ? '+' + money(o.add) : 'Included');
+function bindSeg(sel, key) {
+  $(sel).addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    B[key] = b.dataset.v || b.dataset.id;
+    $(sel).querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b));
+    renderBuild(key === 'design');
+  });
+}
+bindSeg('#designPicker', 'design'); bindSeg('#shapeSeg', 'shape'); bindSeg('#lenSeg', 'len'); bindSeg('#finSeg', 'finish');
+$('#cartToggle').addEventListener('change', e => { B.cart = e.target.checked; renderBuild(); });
+$('#cartName').addEventListener('input', e => { B.name = e.target.value; if (!B.cart) { B.cart = true; $('#cartToggle').checked = true; } renderBuild(); });
+function buildPrice() {
+  const d = byId[B.design];
+  return d.price + LENGTHS.find(l => l.id === B.len).add + FINISHES.find(f => f.id === B.finish).add + (B.cart && toGlyphs(B.name).length ? 6 : 0);
+}
+function renderBuild(spin) {
+  const d = byId[B.design];
+  const L = LENGTHS.find(l => l.id === B.len);
+  const g = toGlyphs(B.name).slice(0, 6).map(x => x[1]).join('<br>');
+  const cart = B.cart && g ? g : null;
+  const prevShape = buildRig.dataset.shape;
+  const same = buildRig.childElementCount && !spin && !cart && !buildRig.dataset.cart && prevShape;
+  if (same) {
+    buildRig.querySelectorAll('.nail').forEach(n => n.className = n.className.replace(/s-\w+/, 's-' + B.shape));
+  } else {
+    buildRig.innerHTML = fan(d, B.shape, {cart});
+    buildRig.querySelectorAll('.nw').forEach(n => n.style.animation = 'none');
+    if (spin) { buildRig.classList.remove('swap'); void buildRig.offsetWidth; buildRig.classList.add('swap'); }
+  }
+  buildRig.dataset.shape = B.shape; buildRig.dataset.cart = cart ? '1' : '';
+  buildRig.style.setProperty('--len', L.len);
+  buildRig.className = 'rig f-' + B.finish + (buildRig.classList.contains('swap') ? ' swap' : '');
+  $('#bName').textContent = d.name + (cart ? ' + Cartouche' : '');
+  $('#bDesc').textContent = `${cap(B.shape)} · ${L.label} · ${cap(B.finish)}`;
+  $('#bPrice').textContent = money(buildPrice());
+  $('#bDesignNote').textContent = `${d.coll} · from ${money(d.price)}`;
+}
+renderBuild();
+stageTilt($('#buildStage'), buildRig, 30, 18);
+$('#buildAdd').addEventListener('click', () => {
+  const d = byId[B.design]; const L = LENGTHS.find(l => l.id === B.len);
+  const nm = B.cart ? B.name.replace(/[^a-z]/gi, '').slice(0, 8) : '';
+  addToBag({key:`custom|${B.design}|${B.shape}|${B.len}|${B.finish}|${nm}`, design:B.design, shape:B.shape, title:'Custom ' + d.name,
+    detail:`${cap(B.shape)} · ${L.label} · ${cap(B.finish)}${nm ? ' · “' + nm + '” cartouche' : ''}`, price:buildPrice()}, buildRig.querySelector('.nw:nth-child(3) .nail'));
+});
+
+/* ---------- CARTOUCHE ---------- */
+const cartInput = $('#cartInput');
+function renderCart() {
+  const g = toGlyphs(cartInput.value);
+  $('#cartDisplay').innerHTML = g.length ? g.map((x, i) => `<span style="animation-delay:${i * 60}ms" title="${esc(x[0].toUpperCase())}: ${esc(x[2])}">${x[1]}</span>`).join('') : '<span style="font-family:var(--f-display);font-size:.4em;color:var(--sand-dim)">Type a name below</span>';
+  $('#glyphKey').innerHTML = g.map(x => `<div class="gk"><div class="gk-in"><div class="gk-f front"><b>${x[1]}</b><span>${esc(x[0].toUpperCase())}</span></div><div class="gk-f back"><b>${esc(x[0].toUpperCase())}</b><span>${esc(x[2])}</span></div></div></div>`).join('');
+}
+cartInput.addEventListener('input', renderCart);
+renderCart();
+$('#cartUse').addEventListener('click', () => {
+  const nm = cartInput.value.replace(/[^a-z]/gi, '').slice(0, 8);
+  $('#cartName').value = nm; B.name = nm; B.cart = !!nm; $('#cartToggle').checked = !!nm;
+  renderBuild(true);
+  $('#atelier').scrollIntoView({behavior: reduce ? 'auto' : 'smooth'});
+  toast(nm ? `“${nm}” added to your custom set` : 'Type a name first');
+});
+
+/* ---------- SIZES ---------- */
+const SIZES = [18, 17, 16, 15, 14, 13, 12, 11, 10, 9];
+$('#sizeRow').innerHTML = SIZES.map((mm, i) => `<div class="size"><span class="nail s-oval" style="--w:${mm * 3.4}px;--h:${mm * 4.6}px"></span><b>${i}</b><span>${mm} mm</span></div>`).join('');
+
+/* ---------- BAG ---------- */
+let bag = [];
+try { bag = JSON.parse(localStorage.getItem('nayls-bag') || '[]'); if (!Array.isArray(bag)) bag = []; } catch (e) { bag = []; }
+const save = () => { try { localStorage.setItem('nayls-bag', JSON.stringify(bag)); } catch (e) {} };
+function addToBag(item, fromEl) {
+  const ex = bag.find(b => b.key === item.key);
+  if (ex) ex.qty++; else bag.push(Object.assign({qty: 1}, item));
+  save(); renderBag(true);
+  fly(fromEl);
+  toast(`${item.title} added to your bag`);
+}
+function fly(el) {
+  if (!el || reduce) return;
+  const r = el.getBoundingClientRect(), t = $('#bagBtn').getBoundingClientRect();
+  const c = el.cloneNode(true); c.classList.add('flyer');
+  Object.assign(c.style, {left: r.left + 'px', top: r.top + 'px', width: r.width + 'px', height: r.height + 'px', margin: 0});
+  document.body.appendChild(c);
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    c.style.transform = `translate(${t.left + t.width / 2 - r.left - r.width / 2}px, ${t.top + t.height / 2 - r.top - r.height / 2}px) scale(.2) rotate(540deg)`;
+    c.style.opacity = '.2';
+  }));
+  setTimeout(() => c.remove(), 850);
+}
+function renderBag(bump) {
+  const n = bag.reduce((a, b) => a + b.qty, 0);
+  const cnt = $('#bagCount'); cnt.textContent = n;
+  if (bump) { cnt.classList.remove('bump'); void cnt.offsetWidth; cnt.classList.add('bump'); }
+  const sub = bag.reduce((a, b) => a + b.qty * b.price, 0);
+  $('#subtotal').textContent = money(sub);
+  $('#shipBar').style.setProperty('--p', Math.min(100, sub / FREE_SHIP * 100) + '%');
+  $('#shipNote').textContent = sub >= FREE_SHIP ? 'You’ve unlocked free shipping.' : `Add ${money(FREE_SHIP - sub)} more for free shipping.`;
+  $('#bagList').innerHTML = bag.length ? bag.map((b, i) => {
+    const d = byId[b.design] || DESIGNS[0];
+    return `<div class="bag-item"><div>${nail(d, b.shape)}</div><div><h4>${esc(b.title)}</h4><p>${esc(b.detail)}</p>
+      <div class="qty"><button data-i="${i}" data-d="-1" aria-label="Decrease">−</button><span>${b.qty}</span><button data-i="${i}" data-d="1" aria-label="Increase">+</button></div></div>
+      <span class="price">${money(b.price * b.qty)}</span></div>`;
+  }).join('') : `<div class="empty"><b>𓋹</b><p>Your bag is empty.<br>The treasury is waiting.</p></div>`;
+  $('#checkout').disabled = !bag.length; $('#checkout').style.opacity = bag.length ? 1 : .5;
+}
+renderBag();
+$('#bagList').addEventListener('click', e => {
+  const b = e.target.closest('button[data-i]'); if (!b) return;
+  const it = bag[+b.dataset.i]; it.qty += +b.dataset.d;
+  if (it.qty <= 0) bag.splice(+b.dataset.i, 1);
+  save(); renderBag();
+});
+const drawer = $('#drawer'), scrim = $('#scrim');
+const openBag = o => { drawer.classList.toggle('open', o); scrim.classList.toggle('open', o); drawer.setAttribute('aria-hidden', !o); if (o) $('#closeBag').focus(); };
+$('#bagBtn').addEventListener('click', () => openBag(true));
+$('#closeBag').addEventListener('click', () => openBag(false));
+scrim.addEventListener('click', () => openBag(false));
+addEventListener('keydown', e => { if (e.key === 'Escape') openBag(false); });
+$('#checkout').addEventListener('click', () => toast('Checkout opens when the store launches. Your bag is saved on this device.'));
+
+document.querySelectorAll('[data-filter]').forEach(a => a.addEventListener('click', () => setFilter(a.dataset.filter)));
+
+$('#joinForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const v = $('#joinEmail').value.trim();
+  if (!/^\S+@\S+\.\S+$/.test(v)) { toast('Enter an email like name@example.com'); return; }
+  $('#joinEmail').value = '';
+  toast('Thanks! Sign-ups go live with the store launch.');
+});
+
+let tt;
+function toast(msg) { const t = $('#toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(tt); tt = setTimeout(() => t.classList.remove('show'), 2800); }
+
+/* ---------- GOLD DUST ---------- */
+if (!reduce) {
+  const cv = $('#dust'), ctx = cv.getContext('2d');
+  let W, H, dpr, parts = [];
+  const size = () => { dpr = Math.min(2, devicePixelRatio || 1); W = cv.width = innerWidth * dpr; H = cv.height = innerHeight * dpr; cv.style.width = innerWidth + 'px'; cv.style.height = innerHeight + 'px'; };
+  size(); addEventListener('resize', size);
+  let last = 0;
+  addEventListener('pointermove', e => {
+    if (e.pointerType === 'touch') return;
+    const now = performance.now(); if (now - last < 16) return; last = now;
+    for (let i = 0; i < 2; i++) parts.push({x: e.clientX * dpr, y: e.clientY * dpr, vx: (Math.random() - .5) * .8 * dpr, vy: (Math.random() * .6 + .2) * dpr, r: (Math.random() * 1.8 + .6) * dpr, life: 1, hue: 40 + Math.random() * 14});
+    if (parts.length > 220) parts.splice(0, parts.length - 220);
+  }, {passive: true});
+  (function tick() {
+    ctx.clearRect(0, 0, W, H);
+    for (const p of parts) {
+      p.x += p.vx; p.y += p.vy; p.vy += .015 * dpr; p.life -= .016;
+      ctx.globalAlpha = Math.max(0, p.life);
+      ctx.fillStyle = `hsl(${p.hue} 80% ${60 + p.life * 20}%)`;
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, 6.283); ctx.fill();
+    }
+    parts = parts.filter(p => p.life > 0);
+    requestAnimationFrame(tick);
+  })();
+}
+})();
+</script>
+</body>
+</html>
